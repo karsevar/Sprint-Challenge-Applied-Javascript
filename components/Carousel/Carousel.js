@@ -11,27 +11,30 @@ class Carousel {
 		// The querySelectorAll() seemed to have captured all of the images.
 		this.images = Array.from(this.images);
 		console.log(this.images.length)
-		this.currentIndex = 1;
+		this.currentIndex = 0;
 		this.rightButton.addEventListener('click', this.pictureIteratorRight.bind(this));
 		this.leftButton.addEventListener('click', this.pictureIteratorLeft.bind(this));
 	}
 	pictureIteratorLeft() {
-
+		if (this.currentIndex >= 0) {
 			this.images.forEach(image => image.style.display = 'none');
 			this.images[this.currentIndex].style.display = 'block';
 			this.currentIndex -= 1;
-			console.log(this.images);
+			console.log(this.currentIndex);
+		} else {
+			this.currentIndex = this.images.length;
+		}
 	}
 
 	pictureIteratorRight() {
 
-		if (this.currentIndex ==! this.images.length) {
+		if (this.currentIndex < this.images.length) {
 			this.images.forEach(image => image.style.display = 'none');
 			this.images[this.currentIndex].style.display = 'block';
 			this.currentIndex += 1;
 			console.log(this.currentIndex);
 		} else {
-			this.currentValue = 0;
+			this.currentIndex = 0;
 		}
 
 		
