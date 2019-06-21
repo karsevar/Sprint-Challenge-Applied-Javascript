@@ -23,15 +23,21 @@ class TabLink {
       this.cards = document.querySelectorAll(`div.card[data-tab="${this.tabData}"]`)
       // this.cards = ;
     }
-    
+
+    // The data-tabs attributes seem to be paritioned in their proper card nodelists.
+    // this.cards.forEach(card => console.log(card.dataset.tab));
+
     
 
      // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. Pass in a card object to the TabCard class. 
     // this.cards = Array.from(this.cards).map();
     this.cards = Array.from(this.cards).map(card => new TabCard(card));
+    // Can't believe it the data-tab attributes are actually partitioned into different objects.
+    // console.log(this.cards);
 
     // Add a click event that invokes this.selectTab
     // this.tabElement.addEventListener();
+    this.tabElement.addEventListener('click', this.selectTab.bind(this));
   }
 
 
@@ -39,21 +45,26 @@ class TabLink {
 
     // Select all elements with the .tab class on them
     // const tabs = document.querySelectorAll();
+    const tabs = document.querySelectorAll('.tab');
     
     // Iterate through the NodeList removing the .active-tab class from each element
     // tabs.forEach()
+    tabs.forEach(tab => tab.classList.remove('active-tab'));
 
     // Select all of the elements with the .card class on them
     // const cards = ;
+    const cards = document.querySelectorAll('.card');
 
     // Iterate through the NodeList setting the display style each one to 'none'
     // cards.forEach()
+    cards.forEach(card => card.style.display = 'none');
     
     // Add a class of ".active-tab" to this.tabElement
     // this.tabElement;
+    this.tabElement.classList.add('active-tab');
   
     // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. Just un-comment the code and study what is happening here.
-    // this.cards.forEach(card => card.selectCard());
+    this.cards.forEach(card => card.selectCard());
   }
 }
 
@@ -63,6 +74,7 @@ class TabCard {
     // Assign this.cardElement to the cardElement DOM reference
     // this.cardElement;
     this.cardElement = cardElement;
+    // console.log(cardElement);
   }
   selectCard(){
     // Update the style of this.cardElement to display = "flex"
@@ -82,11 +94,11 @@ class TabCard {
 
 */
 let tabs = document.querySelectorAll('div.tab');
-console.log(tabs);
+// console.log(tabs);
 
 // div.card selector works.
 let cards = document.querySelectorAll('div.card');
-console.log(cards)
+// console.log(cards)
 
 tabs.forEach(tab => new TabLink(tab));
 
