@@ -32,13 +32,31 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+The DOM (or rather Document Object Model) is an api that is used by web browsers and programming languages to represent HTML elements as objects within a node tree. JavaScript utilizes the DOM api to modify html elements within the browser as a means to render new functionality according to user input. 
+
 2. What is an event?
+
+Events are things that happen within a webpage through user or browser interaction. Programmers are able to create functionality with these events through declaring an event listener (.addEventListener), specifying type of event within the command (.addEventListener('click')), and lastly assigning a callback function that you want executed when said event is fired (.addEventListener('click', element => console.log(element))).
+
+Some of the user events that you can use with an event listener are: click, hover, scroll, hover, focus, blur, mouseover, mouseleave, etc.
 
 3. What is an event listener?
 
+An event listener is the dom element method that is used to catch specified user or browser events in order to create new functionality for a webpage. An illustration of an event handler is:
+```
+const navBarElements = document.querySelectorAll('a.navigation-elements');
+
+navBarElements.forEach(navBarElement =>navBarElement.addEventListener('hover', navBarElement.style.color = 'red'));
+```
+The following lines of code created an event listener on each of the anchor tabs in the navigation bar. When a user places their cursor over one of the anchor elements the letter's color will change to red.
+
 4. Why would we convert a NodeList into an Array?
 
+It would be advantageous to convert a NodeList to an Array if you wanted more functionality that an array can provide; namely the methods .map(), .filter(), .reduce(), etc. With that said though, NodeLists do have the .forEach() and this is usually good enough for most tasks (as illustrated by the code above). 
+
 5. What is a component?
+
+A component is a reusable block of code (much like a large function) that you can reuse for multiple parts of a website or application. Thoeretically the component programming paradigm promises faster development for user interfaces and better code readability. 
 
 ### Git Set up
 
