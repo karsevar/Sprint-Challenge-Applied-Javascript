@@ -7,29 +7,33 @@ class TabLink {
     // Get the `data-tab` value from this.tabElement and store it here
     // this.tabData = ; 
     this.tabData = this.tabElement.dataset.tab;
-    console.log(this.tabData);
-  }
-}
+    // console.log(this.tabData);
+    // this.cards = document.querySelectorAll('div.card');
+    // console.log(this.cards = document.querySelectorAll('technology', `div.card[data-tab="technology"]`))
     
     // We need to find out if a user clicked 'all' cards or a specific category.  Follow the instructions below to accomplish this task:    
-    
-    /* <- Delete this comment block when you work on the if statement
+  
     // Check to see if this.tabData is equal to 'all'
-    if(){
+    if(this.tabData === 'all'){
       // If `all` is true, select all cards regardless of their data attribute values
       // this.cards = ;
+      this.cards = document.querySelectorAll('div.card');
     } else {
       // else if `all` is false, only select the cards with matching this.tabData values
+      this.cards = document.querySelectorAll(`div.card[data-tab="${this.tabData}"]`)
       // this.cards = ;
     }
-    /* <- Delete this comment block when you work on the if statement
+    
+    
 
      // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. Pass in a card object to the TabCard class. 
     // this.cards = Array.from(this.cards).map();
+    this.cards = Array.from(this.cards).map(card => new TabCard(card));
 
     // Add a click event that invokes this.selectTab
     // this.tabElement.addEventListener();
   }
+
 
   selectTab(){
 
@@ -53,14 +57,17 @@ class TabLink {
   }
 }
 
+
 class TabCard {
   constructor(cardElement){
     // Assign this.cardElement to the cardElement DOM reference
     // this.cardElement;
+    this.cardElement = cardElement;
   }
   selectCard(){
     // Update the style of this.cardElement to display = "flex"
     // this.cardElement;
+    this.cardElement.style.display = 'flex';
   }
 
 }
@@ -76,6 +83,10 @@ class TabCard {
 */
 let tabs = document.querySelectorAll('div.tab');
 console.log(tabs);
+
+// div.card selector works.
+let cards = document.querySelectorAll('div.card');
+console.log(cards)
 
 tabs.forEach(tab => new TabLink(tab));
 
