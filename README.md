@@ -44,11 +44,11 @@ Some of the user events that you can use with an event listener are: click, hove
 
 An event listener is the dom element method that is used to catch specified user or browser events in order to create new functionality for a webpage. An illustration of an event handler is:
 ```
-const navBarElements = document.querySelectorAll('a.navigation-elements');
+const navBarElements = document.querySelectorAll('.navigation-element');
 
-navBarElements.forEach(navBarElement =>navBarElement.addEventListener('hover', navBarElement.style.color = 'red'));
+navBarElements.forEach(navBarElement =>navBarElement.addEventListener('click', navBarElement.style.color = 'red'));
 ```
-The following lines of code created an event listener on each of the anchor tabs in the navigation bar. When a user places their cursor over one of the anchor elements the letter's color will change to red.
+The following lines of code created an event listener on each of the anchor tabs in the navigation bar. When a user clicks on one of the anchor elements the letter's color will change to red.
 
 4. Why would we convert a NodeList into an Array?
 
